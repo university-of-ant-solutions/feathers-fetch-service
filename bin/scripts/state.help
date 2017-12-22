@@ -1,0 +1,9 @@
+For example:
+
+  $ ./bin/snail state
+
+Usage: state [options]
+
+Options:
+  --help display a short-ish description of the command
+  -t|--task     : pass the task you want to run (default=deploy)

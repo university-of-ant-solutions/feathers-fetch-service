@@ -1,6 +1,6 @@
-# Project Title
+# Feathers Fetch Service
 
-One Paragraph of project description goes here
+Easily create a Fetch Service for Feathersjs.
 
 ## Getting Started
 

@@ -1,0 +1,14 @@
+{
+  "name": "feathers-fetch-service",
+  "version": "1.0.0",
+  "description": "A one paragraph description about the container.",
+  "main": "lib/",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT"
+}

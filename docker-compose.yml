@@ -1,0 +1,18 @@
+version: "3.4"
+
+services:
+
+  server:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+    volumes:     
+      - ./lib:/usr/src/app/lib
+      - ./package.json:/usr/src/app/package.json
+      - ./package-lock.json:/usr/src/app/package-lock.json
+    ports:
+      - 3000:3000
+    command: tail -f /dev/null
