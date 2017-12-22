@@ -1,0 +1,7 @@
+#!/bin/bash
+ROOT_DIR=`dirname "$(perl -e 'use Cwd "abs_path"; print abs_path(shift)' $0)"`
+
+. "$ROOT_DIR/../constant"
+for f in $ROOT_DIR/../utils/*; do source $f; done
+
+run_terraform -t plan ${@} -var "cluster_id=$AWS_CLUSTER_ID" -var "alb_arn=$AWS_ALB_ARN" -var "sha_tag=$SHA_TAG"
