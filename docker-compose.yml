@@ -9,10 +9,15 @@ services:
     environment:
       - NODE_ENV=development
       - PORT=3000
-    volumes:     
+    volumes:
+      - ./.npmrc:/root/.npmrc
+      - ./build:/usr/src/app/build
       - ./lib:/usr/src/app/lib
+      - ./test:/usr/src/app/test
+      - ./.babelrc:/usr/src/app/.babelrc
+      - ./.npmignore:/usr/src/app/.npmignore
       - ./package.json:/usr/src/app/package.json
-      - ./package-lock.json:/usr/src/app/package-lock.json
+      # - ./package-lock.json:/usr/src/app/package-lock.json
     ports:
       - 3000:3000
     command: tail -f /dev/null

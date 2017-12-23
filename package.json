@@ -1,14 +1,48 @@
 {
   "name": "feathers-fetch-service",
-  "version": "1.0.0",
-  "description": "A one paragraph description about the container.",
-  "main": "lib/",
+  "version": "1.0.0-alpha.3",
+  "description": "Easily create a Fetch Service for Feathersjs",
+  "homepage": "https://github.com/university-of-ant-solutions/feathers-fetch-service#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/university-of-ant-solutions/feathers-fetch-service.git"
+  },
+  "main": "build/",
   "directories": {
     "doc": "docs"
   },
+  "keywords": [
+    "feathers",
+    "feathers-plugin",
+    "REST",
+    "microservice",
+    "fetch",
+    "ajax",
+    "service"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rm -rf build/*",
+    "build": "rm -rf build/* && ./node_modules/.bin/babel lib --ignore spec.js,test.js,**/__tests__/*.js --out-dir build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:tape": "NODE_ENV=test ./node_modules/.bin/tape -r babel-register test/*.js | tap-diff"
   },
-  "author": "",
-  "license": "MIT"
+  "author": {
+    "name": "Hoang Nam",
+    "email": "particle4dev@gmail.com",
+    "url": "http://www.particle4dev.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "lodash.omit": "^4.5.0",
+    "node-fetch": "^1.7.3",
+    "qs": "^6.5.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015-node5": "^1.2.0",
+    "babel-register": "^6.26.0",
+    "nodemon": "^1.14.2",
+    "tap-diff": "^0.1.1",
+    "tape": "^4.8.0"
+  }
 }
