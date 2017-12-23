@@ -1,0 +1,11 @@
+{
+  "watch": [
+    "bin",
+    "config",
+    "public",
+    "src",
+    "test"
+  ],
+  "env": {},
+  "ext": "js json"
+}
