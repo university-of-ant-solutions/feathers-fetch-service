@@ -23,6 +23,9 @@
   "scripts": {
     "clean": "rm -rf build/*",
     "build": "rm -rf build/* && ./node_modules/.bin/babel lib --ignore spec.js,test.js,**/__tests__/*.js --out-dir build",
+    "release:patch": "npm version patch && npm publish",
+    "release:minor": "npm version minor && npm publish",
+    "release:major": "npm version major && npm publish",
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:tape": "NODE_ENV=test ./node_modules/.bin/tape -r babel-register test/*.js | tap-diff"
   },
@@ -33,6 +36,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "lodash.isobject": "^3.0.2",
     "lodash.omit": "^4.5.0",
     "node-fetch": "^1.7.3",
     "qs": "^6.5.1"
@@ -41,6 +45,7 @@
     "babel-cli": "^6.26.0",
     "babel-preset-es2015-node5": "^1.2.0",
     "babel-register": "^6.26.0",
+    "nock": "^9.1.5",
     "nodemon": "^1.14.2",
     "tap-diff": "^0.1.1",
     "tape": "^4.8.0"
