@@ -16,40 +16,37 @@ const query = {
   },
 }
 
-const scope = nock(TEST_URL)
-.persist()
-.get('/')
-.reply(200, {
-  username: 'pgte',
-  email: 'pedro.teixeira@gmail.com'
-})
-.get('/user')
-.reply(200, {
-  username: 'pgte23',
-  email: 'pedro23.teixeira@gmail.com'
-})
-.get('/users')
-.query(query)
-.reply(200, {
-  username: 'particle4dev',
-  email: 'particle4dev@gmail.com'
-})
-.post('/', () => {
-  return true
-})
-.reply(201, (uri, requestBody, cb) => {
-  cb(null, requestBody)
-})
-.post('/users', () => {
-  return true
-})
-.reply(201, (uri, requestBody, cb) => {
-  cb(null, requestBody)
-})
+// const scope = nock(TEST_URL)
+nock(TEST_URL)
+  .persist()
+  .get('/')
+  .reply(200, {
+    username: 'pgte',
+    email: 'pedro.teixeira@gmail.com',
+  })
+  .get('/user')
+  .reply(200, {
+    username: 'pgte23',
+    email: 'pedro23.teixeira@gmail.com',
+  })
+  .get('/users')
+  .query(query)
+  .reply(200, {
+    username: 'particle4dev',
+    email: 'particle4dev@gmail.com',
+  })
+  .post('/', () => true)
+  .reply(201, (uri, requestBody, cb) => {
+    cb(null, requestBody)
+  })
+  .post('/users', () => true)
+  .reply(201, (uri, requestBody, cb) => {
+    cb(null, requestBody)
+  })
 
 test('find', async (t) => {
   t.plan(6)
-  
+
   let res = await testService.find()
   t.equal(res.username, 'pgte')
   t.equal(res.email, 'pedro.teixeira@gmail.com')
@@ -67,7 +64,7 @@ test('find', async (t) => {
 
 test('get', async (t) => {
   t.plan(4)
-  
+
   let res = await testService.get('user')
   t.equal(res.username, 'pgte23')
   t.equal(res.email, 'pedro23.teixeira@gmail.com')
@@ -77,24 +74,22 @@ test('get', async (t) => {
   })
   t.equal(res.username, 'particle4dev')
   t.equal(res.email, 'particle4dev@gmail.com')
-
 })
 
 test('create', async (t) => {
   t.plan(4)
-  
+
   let res = await testService.create('users', {
     username: 'particle4dev',
-    email: 'particle4dev@gmail.com'
+    email: 'particle4dev@gmail.com',
   })
   t.equal(res.username, 'particle4dev')
   t.equal(res.email, 'particle4dev@gmail.com')
 
   res = await testService.create('', {
     username: 'particle4dev',
-    email: 'particle4dev@gmail.com'
+    email: 'particle4dev@gmail.com',
   })
   t.equal(res.username, 'particle4dev')
   t.equal(res.email, 'particle4dev@gmail.com')
-
 })
