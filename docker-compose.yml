@@ -16,7 +16,10 @@ services:
       - ./test:/usr/src/app/test
       - ./.babelrc:/usr/src/app/.babelrc
       - ./.npmignore:/usr/src/app/.npmignore
+      - ./.eslintignore:/usr/src/app/.eslintignore
+      - ./.eslintrc:/usr/src/app/.eslintrc
       - ./package.json:/usr/src/app/package.json
+      - ./yarn.lock:/usr/src/app/yarn.lock
     ports:
       - 3000:3000
     command: tail -f /dev/null

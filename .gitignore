@@ -10,7 +10,7 @@ build
 data/db
 
 # Test coverage
-coverage
+# coverage
 .nyc_output
 
 # Logs
