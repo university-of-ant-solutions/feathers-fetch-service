@@ -1,6 +1,6 @@
 {
   "name": "feathers-fetch-service",
-  "version": "1.0.0-beta",
+  "version": "1.0.0-beta1",
   "description": "Easily create a Fetch Service for Feathersjs",
   "homepage": "https://github.com/university-of-ant-solutions/feathers-fetch-service#readme",
   "repository": {

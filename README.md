@@ -2,65 +2,73 @@
 
 Easily create a Fetch Service for Feathersjs.
 
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
-### Prerequisites
-
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
-
 ### Installing
 
-A step by step series of examples that tell you have to get a development env running
-
-Say what the step will be
+Installation with the npm install command:
 
 ```
-Give the example
+$ npm install --save feathers-fetch-service
 ```
 
-And repeat
+or with yarn command:
 
 ```
-until finished
+$ yarn add feathers-fetch-service
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
+## Example
 
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
+Here's a complete example of a Feathers server with a fetch service.
 
 ```
-Give an example
+$ npm install --save feathers-fetch-service
 ```
 
-### And coding style tests
-
-Explain what these tests test and why
+Create a service.
 
 ```
-Give an example
+import FetchService from 'feathers-fetch-service'
+
+const notificationsService = new FetchService({
+  name: '',
+  options: {},
+  base: 'http://notification.dev.awesome-app.com',
+})
 ```
 
-## Deployment
+Then you can send http request with nice API:
 
-Add additional notes about how to deploy this on a live system
+```
+async function getNotifications(limit = 5, skip) {    
+  const query = {
+    $limit: limit,
+    $sort: {
+      createdAt: -1,
+    },
+  }
+  if (skip) {
+    query.$skip = skip
+  }
+  const data = await notificationsService.find({
+    query,
+  })
+  return data
+}
+```
 
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+```
+async function createComment(story, content, comment, { req }) {
+  const data = await storiesService.create({
+    story,
+    content,
+    comment,
+    createdAt: new Date(),
+  }, {
+    headers: req.headers,
+  })
+  return data
+}
+```
 
 ## Contributing
 
@@ -72,16 +80,10 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Nam Hoang** - *Initial work* - [particle4dev](https://github.com/particle4dev)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
