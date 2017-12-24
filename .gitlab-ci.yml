@@ -63,6 +63,6 @@ publish:
   stage: publish
   script:
     - npm run ci-publish || true
-  # only:
-  #   - master
-  #   - tags
+  only:
+    - master
+    # - tags
