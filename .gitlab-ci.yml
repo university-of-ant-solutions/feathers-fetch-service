@@ -62,6 +62,7 @@ publish:
   <<: *pull-cache
   stage: publish
   script:
+    - npm run build
     - npm run ci-publish || true
   only:
     - master
