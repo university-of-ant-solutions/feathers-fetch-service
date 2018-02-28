@@ -2,9 +2,14 @@
 .jshintrc
 .travis.yml
 .istanbul.yml
+.gitlab-ci.yml
 .babelrc
 .idea/
 .vscode/
+.github/
+.yarn-cache/
 test/
 coverage/
-.github/
+bin/
+lib/
+docs/
